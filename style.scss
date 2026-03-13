@@ -1,0 +1,16 @@
+/*-- scss:defaults --*/
+.cell pre>code {
+  font-size: 0.4rem;
+}
+
+p, ul, li {
+  font-size: 22px;
+  code, a {
+    font-size: 22px;
+  }
+}
+.reveal .slide code {
+  font-size: 22px;
+}
+
+/*-- scss:rules --*/

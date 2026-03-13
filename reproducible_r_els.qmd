@@ -1,0 +1,13 @@
+---
+title: "Introduction to Reproducibility in R"
+author: "Andrew Brown and Mike Schmidt"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+format:
+  revealjs:
+    theme: [default, style.scss]
+editor: visual
+# bibliography: references.bib
+execute:
+  echo: true
+  error: true
+---
