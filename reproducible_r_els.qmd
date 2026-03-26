@@ -1,7 +1,7 @@
 ---
 title: "Introduction to Reproducibility in R"
 author: "Andrew Brown and Mike Schmidt"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+date: today
 format:
   revealjs:
     theme: [default, style.scss]
@@ -11,3 +11,63 @@ execute:
   echo: true
   error: true
 ---
+
+## Overview
+
+!! Fill out when done
+
+## Reproducibility: Why
+
+Programming, in part, helps us repeat repetitive tasks efficiently and in an explainable, repeatable way.
+
+**Reproducibility** is a tool to those ends, particularly towards the explainable and repeatable goals.
+
+Can someone understand and repeat what I've done?
+
+## Reproducibility: What
+
+1. Reproducibility is: Writing scripts in a way where they are usable by more than one person.
+2. Reproducibility is: Writing scripts where they will work across systems (etc. R version, OS, package versions, etc.)
+3. Reproducibility is: Writing scripts so that they are data source and file path agnostic! (`set_wd()` no more)
+
+## An introduction to Reproducibility: File Paths
+
+To begin our journey towards reproduciblity let's first discuss file paths.
+
+- If you open a standalone script, most IDEs (Rstudio and VS Code) start relative to %USERPROFILE% root. On a Windows machine that would be "C://Users/username".
+- To make an R session “relative” to the directory you are working in most of us first learn to use `set_wd()`.
+- Even though it is convenient, a good step towards reproducibility is to stop using `set_wd()`.
+
+## An introduction to Reproducibility: Why no `set_wd()`
+
+- Reproducibility at its core is making your programs run without editing.
+- So if you share a script and another person has to change `set_wd("/c/Users/michaelschmidt/proj/folder/loc")` to `set_wd("/c/Users/andrewbrown/different/proj/folder/location")`.
+- While this is small it is a good first step towards reproducibility.
+
+## But how do I not use `set_wd()`
+
+There are a few options:
+
+- The `{here}` has the `here()` function to create file paths.
+- My preferred choice is to use and generate `.Rproject`s in Rstudio with the GUI or from the command line with `usethis::create_project()`
+
+## Rstudio Setup with RProjects
+
+a. Stop saving R history and Rdata files in options
+
+## Rprojects
+
+a. Git
+b. Renv
+
+## Packages
+
+a. maybe outside the scope but definitely should be mentioned as a tool for reproducibility
+
+## Docker
+
+## Targets
+
+## Examples
+
+a. R targets pipeline
