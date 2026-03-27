@@ -28,34 +28,82 @@ Can someone understand and repeat what I've done?
 
 1. Reproducibility is: Writing scripts in a way where they are usable by more than one person.
 2. Reproducibility is: Writing scripts where they will work across systems (etc. R version, OS, package versions, etc.)
-3. Reproducibility is: Writing scripts so that they are data source and file path agnostic! (`set_wd()` no more)
+3. Reproducibility is: Writing scripts so that they are data source and file path agnostic! (`setwd()` no more)
 
 ## An introduction to Reproducibility: File Paths
 
 To begin our journey towards reproduciblity let's first discuss file paths.
 
 - If you open a standalone script, most IDEs (Rstudio and VS Code) start relative to %USERPROFILE% root. On a Windows machine that would be "C://Users/username".
-- To make an R session “relative” to the directory you are working in most of us first learn to use `set_wd()`.
-- Even though it is convenient, a good step towards reproducibility is to stop using `set_wd()`.
+- To make an R session “relative” to the directory you are working in most of us first learn to use `setwd()`.
+- Even though it is convenient, a good step towards reproducibility is to stop using `setwd()`.
 
-## An introduction to Reproducibility: Why no `set_wd()`
+## An introduction to Reproducibility: Why no `setwd()`
 
 - Reproducibility at its core is making your programs run without editing.
-- So if you share a script and another person has to change `set_wd("/c/Users/michaelschmidt/proj/folder/loc")` to `set_wd("/c/Users/andrewbrown/different/proj/folder/location")`.
+- So if you share a script and another person has to change `setwd("/c/Users/michaelschmidt/proj/folder/loc")` to `setwd("/c/Users/andrewbrown/different/proj/folder/location")`.
 - While this is small it is a good first step towards reproducibility.
 
-## But how do I not use `set_wd()`
+## But how do I not use `setwd()`
 
 There are a few options:
 
-- The `{here}` has the `here()` function to create file paths.
+- The `{here}` package has the `here()` function to create file paths as well as a helper file, `.here` to set the base of a project (this inconsistently works for me). `{here}` can also be helpful in understanding where you are in a project.
 - My preferred choice is to use and generate `.Rproject`s in Rstudio with the GUI or from the command line with `usethis::create_project()`
 
-## Rstudio Setup with RProjects
+## Rstudio Setup with RProjects: Global Options
 
-a. Stop saving R history and Rdata files in options
+Under Tools>Global Options: In the General tab
+
+![](images/rdata_rhistory_settings.png)
+
+This insures that every R session on startup is fresh with no history to mess up any given script or project.
 
 ## Rprojects
+
+To create a project go to File>New Project.
+![](images/new_project_options.png)
+
+## Rprojects
+
+Select Rproject
+![](images/new_project_options2.png)
+
+## Rprojects
+
+Browse to select a parent folder and project folder name then select Create Project.
+![](images/new_project_options3.png)
+
+## Rprojects
+
+The project should open in Rstudio and you should see an empty project with an .Rproj file.  
+![](images/project_file.png)
+
+## R projects
+
+If you click on that file you will have an options window that has options similar to the Global options:
+![](images/project_options_window.png)
+
+## Rprojects
+
+But more importantly your R session is now relative to your Rproject parent folder, and you never need to `setwd()` again so long as your project is active.
+![](images/getwd_project.png)
+
+## Rprojects
+
+If you are no longer working in the project and want to initialize it in Rstudio go to File>Open Project or File>Recent Projects or navigate in explorer to the .Rproj file a double click it, that should open the project in Rstudio.
+You will know you are working in a .Rproject when you see it set in the upper right corn of your Rstudio session.
+
+![](images/rproj_icon.png)
+
+## Rprojects
+
+- Now that we've created an Rproject, and it is active, we can create and write scripts as we otherwise would.
+- Important note: if the project is active, and you are working on a script in a folder outside the project folder, R will still be relative to the active project's root.
+
+## Rproject: Renv
+
+Now that we have relative file paths, and we know the next user of our scripts.
 
 a. Git
 b. Renv
